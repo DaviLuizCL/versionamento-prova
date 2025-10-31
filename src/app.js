@@ -15,9 +15,15 @@ function exibir() {
   } else {
     saida.textContent = `${v} ${de.value} = ${r} ${para.value}`;
   }
+  saida.textContent = Number.isNaN(r)
+  ? "Informe um número válido."
+  : ${v} ${de.value} equivalem a ${r} ${para.value}.;
 }
 
 btn.addEventListener("click", exibir);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") exibir();
 });
+[valor, de, para].forEach(el => el.addEventListener("input", exibir));
+[de, para].forEach(el => el.addEventListener("change", exibir));
+exibir();
