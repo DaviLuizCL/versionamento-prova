@@ -21,3 +21,6 @@ btn.addEventListener("click", exibir);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") exibir();
 });
+[valor, de, para].forEach(el => el.addEventListener("input", exibir));
+[de, para].forEach(el => el.addEventListener("change", exibir));
+exibir();
