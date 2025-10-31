@@ -1,40 +1,72 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Conversor de Tempo!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <title>Conversor de Tempo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Conversor simples de unidades de tempo: segundos, minutos, horas e dias." />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- opcional: <link rel="icon" href="favicon.svg" type="image/svg+xml" /> -->
 </head>
 <body>
-  <p>Isso aqui é o conversor de moedas mais top das galáxias</p>
-  <main>
+  <header>
     <h1>Conversor de Tempo</h1>
-    <label>Valor: <input id="valor" type="number" step="any" value="60"></label>
+    <p class="subtle">
+      Converta entre <strong>segundos</strong>, <strong>minutos</strong>, <strong>horas</strong> e <strong>dias</strong>.
+    </p>
+  </header>
 
-    <label>De:
-      <select id="de">
-        <option value="s">segundos</option>
-        <option value="min" selected>minutos</option>
-        <option value="h">horas</option>
-        <option value="dia">dias</option>
-      </select>
-    </label>
+  <main>
+    <form id="form-conversor" action="." onsubmit="return false" aria-describedby="ajuda">
+      <fieldset>
+        <legend>Dados da conversão</legend>
 
-    <label>Para:
-      <select id="para">
-        <option value="s">segundos</option>
-        <option value="min">minutos</option>
-        <option value="h" selected>horas</option>
-        <option value="dia">dias</option>
-      </select>
-    </label>
+        <div class="field">
+          <label for="valor">Valor</label>
+          <input id="valor" name="valor" type="number" step="any" inputmode="decimal" value="60" required />
+        </div>
 
-    <button id="converter" title="Executar conversão">Converter</button>
+        <div class="grid-2">
+          <div class="field">
+            <label for="de">De</label>
+            <select id="de" name="de">
+              <option value="s">segundos (s)</option>
+              <option value="min" selected>minutos (min)</option>
+              <option value="h">horas (h)</option>
+              <option value="dia">dias (dia)</option>
+            </select>
+          </div>
 
-    <p id="saida" aria-live="polite"></p>
+          <div class="field">
+            <label for="para">Para</label>
+            <select id="para" name="para">
+              <option value="s">segundos (s)</option>
+              <option value="min">minutos (min)</option>
+              <option value="h" selected>horas (h)</option>
+              <option value="dia">dias (dia)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="converter" type="button" title="Executar conversão" aria-describedby="ajuda">
+          Converter
+        </button>
+      </fieldset>
+
+      <p id="saida" class="saida" aria-live="polite"></p>
+      <p id="ajuda" class="help">
+        Dica: digite um valor e pressione <kbd>Enter</kbd> ou clique em <em>Converter</em>.
+      </p>
+    </form>
   </main>
-  <script src="src/units.js"></script>
-  <script src="src/app.js"></script>
+
+  <footer class="footer">
+    <small>
+      v1 • Projeto acadêmico — HTML/CSS/JS puro. Sem backend.
+    </small>
+  </footer>
+
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>
