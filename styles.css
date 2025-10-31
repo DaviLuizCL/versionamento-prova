@@ -8,3 +8,7 @@ button:hover { filter: brightness(.95); }
 button { background: var(--pri); color: var(--pri-contr); }
 input, select { width: 100%; padding: .5rem; border: 1px solid #d0d7e2; border-radius: 8px; }
 input:focus, select:focus, button:focus { outline: 3px solid rgba(59,130,246,.35); outline-offset: 2px; }
+@media (min-width: 768px){
+  main { padding: 2rem 2.5rem; }
+  h1 { font-size: 1.75rem; }
+}
