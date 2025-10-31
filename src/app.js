@@ -15,6 +15,9 @@ function exibir() {
   } else {
     saida.textContent = `${v} ${de.value} = ${r} ${para.value}`;
   }
+  saida.textContent = Number.isNaN(r)
+  ? "Informe um número válido."
+  : ${v} ${de.value} equivalem a ${r} ${para.value}.;
 }
 
 btn.addEventListener("click", exibir);
