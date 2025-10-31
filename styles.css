@@ -1,4 +1,6 @@
-:root { font-family: system-ui, sans-serif; }
-main { max-width: 480px; margin: 2rem auto; padding: 1rem; }
-label, button { display:block; margin: .5rem 0; }
-#saida { margin-top: 1rem; font-weight: 600; }
+body { background: #f5f7fb; }
+main { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+label { font-weight: 500; }
+button { padding: .625rem 1rem; border: 0; border-radius: 8px; cursor: pointer; }
+button:hover { filter: brightness(.95); }
