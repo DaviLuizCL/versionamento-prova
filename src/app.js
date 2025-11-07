@@ -49,6 +49,7 @@ function exibir() {
 }
 
 // ----- Pride mode 🌈 -----
+// ----- Pride mode 🌈 -----
 let prideIntervalId = null;
 let prideHue = 0;
 let prideActive = false;
@@ -57,17 +58,19 @@ function togglePrideMode() {
   if (!prideActive) {
     prideActive = true;
     if (prideButton) {
-      prideButton.textContent = "Desligar pride 🌈";
+      prideButton.textContent = "Desligar viadagem 🌈";
     }
 
     prideIntervalId = setInterval(() => {
-      prideHue = (prideHue + 5) % 360;
+      // muda de cor bem rápido
+      prideHue = (prideHue + 40) % 360;
+      // você pode brincar com saturação e luminosidade aqui também
       document.body.style.background = `hsl(${prideHue} 80% 50%)`;
-    }, 100);
+    }, 40); // 40ms = bem mais insano que 100ms
   } else {
     prideActive = false;
     if (prideButton) {
-      prideButton.textContent = "Pride button 🌈";
+      prideButton.textContent = "viadagem button 🌈";
     }
     if (prideIntervalId !== null) {
       clearInterval(prideIntervalId);
@@ -77,6 +80,7 @@ function togglePrideMode() {
     document.body.style.background = "";
   }
 }
+
 
 // Clique no botão
 btn.addEventListener("click", exibir);
