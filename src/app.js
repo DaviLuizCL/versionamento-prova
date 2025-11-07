@@ -1,6 +1,5 @@
 // src/app.js
 import { convert } from "./units.js";
-const prideButton = $("#pride-button");
 
 const $ = (sel) => document.querySelector(sel);
 const valor = $("#valor");
@@ -8,6 +7,7 @@ const de = $("#de");
 const para = $("#para");
 const btn = $("#converter");
 const saida = $("#saida");
+const prideButton = $("#pride-button");
 
 // formata número no padrão pt-BR (sem exagerar nas casas decimais)
 const nf = new Intl.NumberFormat("pt-BR", {
@@ -45,8 +45,10 @@ function exibir() {
   const paraNome = plural(para.value, r);
 
   // mensagem mais amigável
-  saida.textContent = `${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.`;
+  saida.textContent = ${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.;
 }
+
+// ----- Pride mode 🌈 -----
 let prideIntervalId = null;
 let prideHue = 0;
 let prideActive = false;
@@ -83,6 +85,7 @@ btn.addEventListener("click", exibir);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") exibir();
 });
+
 if (prideButton) {
   prideButton.addEventListener("click", togglePrideMode);
 }
@@ -95,4 +98,3 @@ if (prideButton) {
 
 // mostra um resultado inicial ao carregar
 document.addEventListener("DOMContentLoaded", exibir);
-
