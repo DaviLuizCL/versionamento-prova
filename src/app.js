@@ -45,7 +45,7 @@ function exibir() {
   const paraNome = plural(para.value, r);
 
   // mensagem mais amigável
-  saida.textContent = ${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.;
+  saida.textContent = `${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.`;
 }
 
 // ----- Pride mode 🌈 -----
@@ -62,7 +62,7 @@ function togglePrideMode() {
 
     prideIntervalId = setInterval(() => {
       prideHue = (prideHue + 5) % 360;
-      document.body.style.background = hsl(${prideHue} 80% 50%);
+      document.body.style.background = `hsl(${prideHue} 80% 50%)`;
     }, 100);
   } else {
     prideActive = false;
