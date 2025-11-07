@@ -7,6 +7,7 @@ const de = $("#de");
 const para = $("#para");
 const btn = $("#converter");
 const saida = $("#saida");
+const prideButton = $("#pride-button");
 
 // formata número no padrão pt-BR (sem exagerar nas casas decimais)
 const nf = new Intl.NumberFormat("pt-BR", {
@@ -44,7 +45,37 @@ function exibir() {
   const paraNome = plural(para.value, r);
 
   // mensagem mais amigável
-  saida.textContent = `${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.`;
+  saida.textContent = ${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.;
+}
+
+// ----- Pride mode 🌈 -----
+let prideIntervalId = null;
+let prideHue = 0;
+let prideActive = false;
+
+function togglePrideMode() {
+  if (!prideActive) {
+    prideActive = true;
+    if (prideButton) {
+      prideButton.textContent = "Desligar pride 🌈";
+    }
+
+    prideIntervalId = setInterval(() => {
+      prideHue = (prideHue + 5) % 360;
+      document.body.style.background = hsl(${prideHue} 80% 50%);
+    }, 100);
+  } else {
+    prideActive = false;
+    if (prideButton) {
+      prideButton.textContent = "Pride button 🌈";
+    }
+    if (prideIntervalId !== null) {
+      clearInterval(prideIntervalId);
+      prideIntervalId = null;
+    }
+    // volta pro background padrão do CSS
+    document.body.style.background = "";
+  }
 }
 
 // Clique no botão
@@ -54,6 +85,10 @@ btn.addEventListener("click", exibir);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") exibir();
 });
+
+if (prideButton) {
+  prideButton.addEventListener("click", togglePrideMode);
+}
 
 // Atualização em tempo real ao digitar/trocar selects
 [valor, de, para].forEach((el) => {
