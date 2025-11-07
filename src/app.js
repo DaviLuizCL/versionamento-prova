@@ -1,5 +1,6 @@
 // src/app.js
 import { convert } from "./units.js";
+const prideButton = $("#pride-button");
 
 const $ = (sel) => document.querySelector(sel);
 const valor = $("#valor");
@@ -46,6 +47,34 @@ function exibir() {
   // mensagem mais amigável
   saida.textContent = `${vFmt} ${deNome} equivalem a ${rFmt} ${paraNome}.`;
 }
+let prideIntervalId = null;
+let prideHue = 0;
+let prideActive = false;
+
+function togglePrideMode() {
+  if (!prideActive) {
+    prideActive = true;
+    if (prideButton) {
+      prideButton.textContent = "Desligar pride 🌈";
+    }
+
+    prideIntervalId = setInterval(() => {
+      prideHue = (prideHue + 5) % 360;
+      document.body.style.background = hsl(${prideHue} 80% 50%);
+    }, 100);
+  } else {
+    prideActive = false;
+    if (prideButton) {
+      prideButton.textContent = "Pride button 🌈";
+    }
+    if (prideIntervalId !== null) {
+      clearInterval(prideIntervalId);
+      prideIntervalId = null;
+    }
+    // volta pro background padrão do CSS
+    document.body.style.background = "";
+  }
+}
 
 // Clique no botão
 btn.addEventListener("click", exibir);
@@ -54,6 +83,9 @@ btn.addEventListener("click", exibir);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") exibir();
 });
+if (prideButton) {
+  prideButton.addEventListener("click", togglePrideMode);
+}
 
 // Atualização em tempo real ao digitar/trocar selects
 [valor, de, para].forEach((el) => {
@@ -63,3 +95,4 @@ document.addEventListener("keydown", (e) => {
 
 // mostra um resultado inicial ao carregar
 document.addEventListener("DOMContentLoaded", exibir);
+
