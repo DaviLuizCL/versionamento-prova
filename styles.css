@@ -183,3 +183,35 @@ kbd {
   color: var(--muted);
 }
 .footer small { display: inline-block; }
+
+
+/* ---------- Pride button ---------- */
+.pride-button {
+  margin-top: var(--space-3);
+  padding: .7rem 1.1rem;
+  border-radius: 999px;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff8c00,
+    #ffee00,
+    #00c851,
+    #007bff,
+    #9933ff
+  );
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  transition: transform .06s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.pride-button:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .24);
+}
+
+.pride-button:active {
+  transform: translateY(1px) scale(.99);
+}
